@@ -1,14 +1,13 @@
-
 let ooe = {
-  lat: 48.1,
-  lng: 13.8,
-  title: "OOE"
+    lat: 48.1,
+    lng: 13.8,
+    title: "OOE"
 };
 
 let startLayer = L.tileLayer.provider("BasemapAT.grau");
 
 let map = L.map("map", {
-    center: [ ooe.lat, ooe.lng ],
+    center: [ooe.lat, ooe.lng],
     zoom: 9,
     layers: [
         startLayer
@@ -41,12 +40,12 @@ let miniMap = new L.Control.MiniMap(
 ).addTo(map);
 
 // geojson laden und anzeigen
-async function loadBorders(url){
+async function loadBorders(url) {
     let response = await fetch(url);
     let geojson = await response.json();
     console.log('Geojson borders: ', geojson);
     L.geoJSON(geojson, {
-        onEachFeature: function(feature, layer){
+        onEachFeature: function (feature, layer) {
             console.log("Feature: ", feature);
             layer.bindPopup(`<h4>${feature.properties.VIERTEL_NA}</h4>`)
         },
