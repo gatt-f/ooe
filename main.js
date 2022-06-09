@@ -42,3 +42,7 @@ let miniMap = new L.Control.MiniMap(
 
 // TODO: geojson laden und anzeigen
 
+async function loadBorders(url){
+    let response = await fetch(url);
+    let geojson = await response.json();
+}
